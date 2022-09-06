@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">NoteApp</string>
+    <string name="my_note">Công việc của tôi</string>
+    <string name="done">Done</string>
+    <string name="search">Tìm công việc</string>
+    <string name="add_note">Thêm công việc</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="back">Back</string>
+    <string name="title">Tiêu đề</string>
+    <string name="sub_text">Phân loại</string>
+    <string name="enter_note">Nhập nội dung</string>
+    <string name="dateTime">Ngày tạo</string>
+    <string name="more">more</string>
+    <string name="delete_notes">Xóa công việc</string>
+</resources>
