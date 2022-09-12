@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="ThemeSearch" parent="Theme.AppCompat">
         <item name="android:editTextColor">@color/ColorWhite</item>
         <item name="android:textColorHint">@color/ColorGray</item>
