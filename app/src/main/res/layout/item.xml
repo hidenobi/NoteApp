@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardViewItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/_5sdp"
@@ -10,69 +11,53 @@
     app:cardElevation="@dimen/_5sdp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    android:id="@+id/cardViewItem"
     app:layout_constraintTop_toTopOf="parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:baselineAligned="false"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="0dp"
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.7"
-            android:orientation="vertical">
+            android:fontFamily="@font/manrope_bold"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingEnd="0dp"
+            android:text="@string/title"
+            android:textColor="@color/ColorWhite"
+            android:textSize="@dimen/_15sdp" />
 
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/manrope_bold"
-                android:paddingStart="@dimen/_10sdp"
-                android:paddingTop="@dimen/_10sdp"
-                android:paddingEnd="0dp"
-                android:text="@string/title"
-                android:textColor="@color/ColorWhite"
-                android:textSize="@dimen/_15sdp" />
+        <TextView
+            android:id="@+id/tvDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope_regular"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingEnd="0dp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:text="@string/enter_note"
+            android:textColor="@color/ColorText"
+            android:textSize="@dimen/_11sdp" />
 
-            <TextView
-                android:id="@+id/tvDesc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/manrope_regular"
-                android:paddingStart="@dimen/_10sdp"
-                android:paddingTop="@dimen/_5sdp"
-                android:paddingEnd="0dp"
-                android:paddingBottom="@dimen/_5sdp"
-                android:text="@string/enter_note"
-                android:textColor="@color/ColorText"
-                android:textSize="@dimen/_11sdp" />
+        <TextView
+            android:id="@+id/tvDateTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope_regular"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingTop="@dimen/_2sdp"
+            android:paddingEnd="0dp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:text="@string/dateTime"
+            android:textColor="@color/ColorText"
+            android:textSize="@dimen/_9sdp" />
 
-            <TextView
-                android:id="@+id/tvDateTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/manrope_regular"
-                android:paddingStart="@dimen/_10sdp"
-                android:paddingTop="@dimen/_2sdp"
-                android:paddingEnd="0dp"
-                android:paddingBottom="@dimen/_5sdp"
-                android:text="@string/dateTime"
-                android:textColor="@color/ColorText"
-                android:textSize="@dimen/_9sdp" />
-
-        </LinearLayout>
-
-
-<!--       <CheckBox-->
-<!--           android:id="@+id/cbStatus"-->
-<!--           android:layout_width="wrap_content"-->
-<!--           android:layout_height="wrap_content"-->
-<!--           android:buttonTint="@color/ColorWhite"-->
-<!--           android:paddingEnd="@dimen/_30sdp"-->
-<!--           android:paddingStart="@dimen/_2sdp"-->
-<!--           android:layout_gravity="center_vertical"/>-->
 
     </LinearLayout>
 

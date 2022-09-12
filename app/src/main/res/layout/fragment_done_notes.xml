@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    tools:context=".fragment.HomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.DoneNotesFragment"
+    android:background="@color/colorPrimaryDark">
 
     <TextView
         android:id="@+id/tvMyTask"
@@ -14,7 +14,7 @@
         android:paddingStart="@dimen/_10sdp"
         android:paddingTop="@dimen/_10sdp"
         android:paddingEnd="0dp"
-        android:text="@string/my_note"
+        android:text="@string/complete_note"
         android:textColor="@color/ColorWhite"
         android:textSize="@dimen/_20ssp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,18 +43,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/svSearch" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:layout_marginBottom="@dimen/_20sdp"
-        android:background="@color/colorAccent"
-        android:contentDescription="@string/add_note"
-        android:src="@drawable/ic_add"
-        android:tint="@color/ColorWhite"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

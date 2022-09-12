@@ -9,7 +9,16 @@
     <string name="title">Tiêu đề</string>
     <string name="sub_text">Phân loại</string>
     <string name="enter_note">Nhập nội dung</string>
-    <string name="dateTime">Ngày tạo</string>
+    <string name="dateTime">Thời hạn</string>
     <string name="more">more</string>
-    <string name="delete_notes">Xóa công việc</string>
+    <string name="delete_notes">Đưa vào thùng rác</string>
+    <string name="done_note">Công việc đã hoàn thành</string>
+    <string name="delete_note">Công việc đã xóa</string>
+    <string name="home">Home</string>
+    <string name="note_delete">Công việc đã xóa</string>
+    <string name="mark_as_complete">Đánh dấu là đã hoàn thành</string>
+    <string name="remove_note">Xóa công việc</string>
+    <string name="complete_note">Công việc đã hoàn thành</string>
+    <string name="restore_note">Khôi phục công việc đã xóa</string>
+    <string name="mark_not_complete_note">Đánh dấu là chưa hoàn thành</string>
 </resources>

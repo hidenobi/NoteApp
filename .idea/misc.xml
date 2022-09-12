@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ManagerAndroid/NoteApp/app/src/main/res/drawable/bc_menu.xml" value="0.1" />
         <entry key="..\:/ManagerAndroid/NoteApp/app/src/main/res/drawable/bc_search_view.xml" value="0.1" />
         <entry key="..\:/ManagerAndroid/NoteApp/app/src/main/res/drawable/ic_back.xml" value="0.1" />
         <entry key="..\:/ManagerAndroid/NoteApp/app/src/main/res/drawable/ic_delete.xml" value="0.1" />
@@ -16,10 +17,13 @@
         <entry key="..\:/ManagerAndroid/NoteApp/app/src/main/res/drawable/note_color_7.xml" value="0.1" />
         <entry key="..\:/ManagerAndroid/NoteApp/app/src/main/res/layout-v22/activity_main.xml" value="0.2" />
         <entry key="..\:/ManagerAndroid/NoteApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/ManagerAndroid/NoteApp/app/src/main/res/layout/fragment_create_note.xml" value="0.16666666666666666" />
+        <entry key="..\:/ManagerAndroid/NoteApp/app/src/main/res/layout/fragment_create_note.xml" value="0.3333333333333333" />
+        <entry key="..\:/ManagerAndroid/NoteApp/app/src/main/res/layout/fragment_done_notes.xml" value="0.1859375" />
+        <entry key="..\:/ManagerAndroid/NoteApp/app/src/main/res/layout/fragment_garbage.xml" value="0.2" />
         <entry key="..\:/ManagerAndroid/NoteApp/app/src/main/res/layout/fragment_home.xml" value="0.16666666666666666" />
         <entry key="..\:/ManagerAndroid/NoteApp/app/src/main/res/layout/fragment_notes_bottom_sheet.xml" value="0.22" />
         <entry key="..\:/ManagerAndroid/NoteApp/app/src/main/res/layout/item.xml" value="0.3333333333333333" />
+        <entry key="..\:/ManagerAndroid/NoteApp/app/src/main/res/menu/bottom_menu.xml" value="0.19895833333333332" />
       </map>
     </option>
   </component>

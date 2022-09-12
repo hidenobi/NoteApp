@@ -8,33 +8,41 @@ import com.example.noteapp.database.NotesDatabase
 import com.example.noteapp.entities.Notes
 import com.example.noteapp.repository.NoteRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
-class NoteViewModel(application: Application):AndroidViewModel(application) {
-    val readAllData: LiveData<MutableList<Notes>>
+class NoteViewModel(application: Application) : AndroidViewModel(application) {
+    val homeNotes: LiveData<MutableList<Notes>>
+    val doneNotes: LiveData<MutableList<Notes>>
+    val garbageNotes: LiveData<MutableList<Notes>>
     private val repository: NoteRepository
+
     init {
         val noteDao = NotesDatabase.getDatabase(application).noteDao()
         repository = NoteRepository(noteDao)
-        readAllData = repository.readAllData
+        homeNotes = repository.homeNotes
+        doneNotes = repository.doneNotes
+        garbageNotes = repository.garbageNotes
     }
-    fun addNote(notes: Notes){
+
+    fun addNote(notes: Notes) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addNote(notes)
         }
     }
-    fun updateNote(notes: Notes){
+
+    fun updateNote(notes: Notes) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateNote(notes)
         }
     }
-    fun deleteNote(notes: Notes){
+
+    fun deleteNote(notes: Notes) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteNote(notes)
         }
     }
-    fun deleteSpecificNote(id:Int){
+
+    fun deleteSpecificNote(id: Int) {
         viewModelScope.launch {
             repository.deleteSpecificNote(id)
         }

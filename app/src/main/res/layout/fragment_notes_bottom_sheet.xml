@@ -90,27 +90,6 @@
         </FrameLayout>
 
         <FrameLayout
-            android:id="@+id/flNoteColorWhite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/_5sdp"
-            android:paddingEnd="0dp">
-
-            <View
-                android:layout_width="@dimen/_24sdp"
-                android:layout_height="@dimen/_24sdp"
-                android:background="@drawable/note_color_3" />
-
-            <ImageView
-                android:id="@+id/ivNoteColorWhite"
-                android:layout_width="@dimen/_16sdp"
-                android:layout_height="@dimen/_16sdp"
-                android:layout_gravity="center"
-                android:contentDescription="@string/done"
-                app:tint="@color/ColorDarkBlack" />
-        </FrameLayout>
-
-        <FrameLayout
             android:id="@+id/flNoteColorPurple"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -207,7 +186,69 @@
         android:maxLines="1"
         android:text="@string/delete_notes"
         android:textColor="@color/ColorWhite"
-        app:drawableStartCompat="@drawable/ic_delete" />
+        app:drawableStartCompat="@drawable/ic_delete"
+        android:paddingBottom="@dimen/_4sdp"
+        android:paddingTop="@dimen/_4sdp" />
+
+    <TextView
+        android:id="@+id/tvRestoreNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/_10sdp"
+        android:ellipsize="end"
+        android:fontFamily="@font/manrope_bold"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:text="@string/restore_note"
+        android:textColor="@color/ColorWhite"
+        app:drawableStartCompat="@drawable/ic_delete"
+        android:paddingBottom="@dimen/_4sdp"
+        android:paddingTop="@dimen/_4sdp" />
+
+    <TextView
+        android:id="@+id/tvCompleteNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/_10sdp"
+        android:ellipsize="end"
+        android:fontFamily="@font/manrope_bold"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:text="@string/mark_as_complete"
+        android:textColor="@color/ColorWhite"
+        app:drawableStartCompat="@drawable/ic_done_all"
+        android:paddingBottom="@dimen/_4sdp"
+        android:paddingTop="@dimen/_4sdp" />
+
+    <TextView
+        android:id="@+id/tvRemoveNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/_10sdp"
+        android:ellipsize="end"
+        android:fontFamily="@font/manrope_bold"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:text="@string/remove_note"
+        android:textColor="@color/ColorWhite"
+        app:drawableStartCompat="@drawable/ic_done_all"
+        android:paddingBottom="@dimen/_4sdp"
+        android:paddingTop="@dimen/_4sdp" />
+
+    <TextView
+        android:id="@+id/tvNotCompleteNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/_10sdp"
+        android:ellipsize="end"
+        android:fontFamily="@font/manrope_bold"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:text="@string/mark_not_complete_note"
+        android:textColor="@color/ColorWhite"
+        app:drawableStartCompat="@drawable/ic_done_all"
+        android:paddingBottom="@dimen/_4sdp"
+        android:paddingTop="@dimen/_4sdp" />
 
 
 </LinearLayout>

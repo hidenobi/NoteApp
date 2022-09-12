@@ -7,19 +7,19 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.noteapp.R
 import com.example.noteapp.adapter.NotesAdapter
-import com.example.noteapp.databinding.FragmentHomeBinding
+import com.example.noteapp.databinding.FragmentDoneNotesBinding
 import com.example.noteapp.viewmodel.NoteViewModel
 
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class DoneNotesFragment : Fragment(R.layout.fragment_done_notes) {
 
-    private lateinit var binding: FragmentHomeBinding
+
+    private lateinit var binding: FragmentDoneNotesBinding
     private lateinit var noteViewModel: NoteViewModel
     private lateinit var notesAdapter: NotesAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentHomeBinding.bind(view)
-        addFragment()
+        binding = FragmentDoneNotesBinding.bind(view)
         initAdapter()
         initViewModel()
     }
@@ -38,15 +38,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun initViewModel() {
         noteViewModel = ViewModelProvider(this)[NoteViewModel::class.java]
-        noteViewModel.homeNotes.observe(viewLifecycleOwner) {
+        noteViewModel.doneNotes.observe(viewLifecycleOwner) {
             notesAdapter.setData(it)
-        }
-    }
-
-    private fun addFragment() {
-        binding.btnAdd.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.frameContainer, CreateNoteFragment()).addToBackStack(null).commit()
         }
     }
 
@@ -57,7 +50,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             bundle.putInt("notesId", notesId)
             bundle.putInt("noteStatus", notesStatus)
             fragment.arguments = bundle
-            parentFragmentManager.beginTransaction().replace(R.id.frameContainer, fragment)
+            parentFragmentManager.beginTransaction().setReorderingAllowed(true)
+                .replace(R.id.frameContainer, fragment)
                 .addToBackStack(null).commit()
         }
     }

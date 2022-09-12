@@ -72,7 +72,9 @@
         android:textSize="@dimen/_16ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtTitle" />
+        app:layout_constraintTop_toBottomOf="@id/edtTitle"
+        android:drawablePadding="@dimen/_24sdp"
+        app:drawableEndCompat="@drawable/ic_calendar" />
 
     <LinearLayout
         android:id="@+id/llSubTitle"

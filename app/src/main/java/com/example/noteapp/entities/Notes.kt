@@ -20,7 +20,7 @@ class Notes : Serializable {
     var dateTime: String? = null
 
     @ColumnInfo(name = "statusNote")
-    var statusNote: Boolean? = false
+    var statusNote: Int = 0
 
     @ColumnInfo(name = "noteText")
     var noteText: String? = null

@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.noteapp.databinding.ItemBinding
 import com.example.noteapp.entities.Notes
 
-class NotesAdapter(private val callBack: (Notes)->Unit) :
+class NotesAdapter(private val callBack: (Notes) -> Unit) :
     RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
-    private var listener:OnItemClickListener?=null
+    private var listener: OnItemClickListener? = null
     private var arrList = mutableListOf<Notes>()
+
     inner class NotesViewHolder(
         private val binding: ItemBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -21,13 +22,12 @@ class NotesAdapter(private val callBack: (Notes)->Unit) :
                 tvDateTime.text = item.dateTime
                 tvDesc.text = item.noteText
                 cardViewItem.setOnClickListener {
-                    listener!!.onClicked(item.id!!)
+                    listener!!.onClicked(item.id!!, item.statusNote)
                 }
             }
-            if(item.color!=null){
+            if (item.color != null) {
                 binding.cardViewItem.setCardBackgroundColor(Color.parseColor(item.color))
-            }
-            else{
+            } else {
                 binding.cardViewItem.setCardBackgroundColor(Color.parseColor("#171C26"))
             }
         }
@@ -48,18 +48,19 @@ class NotesAdapter(private val callBack: (Notes)->Unit) :
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(notes:MutableList<Notes>){
+    fun setData(notes: MutableList<Notes>) {
         this.arrList = notes
         notifyDataSetChanged()
     }
-//    private fun sendData(notes: Notes) {
+
+    //    private fun sendData(notes: Notes) {
 //        callBack(notes)
 //    }
-    interface OnItemClickListener{
-        fun onClicked(notesId: Int)
+    interface OnItemClickListener {
+        fun onClicked(notesId: Int, notesStatus: Int)
     }
 
-    fun setOnClickListener(listener: OnItemClickListener){
+    fun setOnClickListener(listener: OnItemClickListener) {
         this.listener = listener
     }
 
