@@ -171,7 +171,10 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
     private fun showToast(notification: String) {
         Toast.makeText(context, notification, Toast.LENGTH_SHORT).show()
     }
-
+    // dùng callback thay thế
+    // 1 callback cho action
+    // 1 callback cho mã màu
+    // nên cải thiện bằng R.color
     private val broadcastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(p0: Context?, p1: Intent?) {
             val actionColor = p1!!.getStringExtra("action")
