@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="@dimen/_5sdp">
-
+        <!--    Không nên    -->
         <FrameLayout
             android:id="@+id/flNoteColorBlue"
             android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
                 android:contentDescription="@string/done"
                 app:tint="@color/ColorWhite" />
         </FrameLayout>
-
+        <!-- Nên -->
         <FrameLayout
             android:id="@+id/flNoteColorYellow"
             android:layout_width="wrap_content"
@@ -88,7 +88,7 @@
                 android:contentDescription="@string/done"
                 app:tint="@color/ColorWhite" />
         </FrameLayout>
-
+        <!--    Bỏ     -->
         <FrameLayout
             android:id="@+id/flNoteColorPurple"
             android:layout_width="wrap_content"
@@ -109,7 +109,7 @@
                 android:contentDescription="@string/done"
                 app:tint="@color/ColorWhite" />
         </FrameLayout>
-
+        <!--   Nên     -->
         <FrameLayout
             android:id="@+id/flNoteColorGreen"
             android:layout_width="wrap_content"
@@ -130,7 +130,7 @@
                 android:contentDescription="@string/done"
                 app:tint="@color/ColorWhite" />
         </FrameLayout>
-
+        <!--   Nên     -->
         <FrameLayout
             android:id="@+id/flNoteColorOrange"
             android:layout_width="wrap_content"
@@ -151,7 +151,7 @@
                 android:contentDescription="@string/done"
                 app:tint="@color/ColorWhite" />
         </FrameLayout>
-
+        <!--   Nên     -->
         <FrameLayout
             android:id="@+id/flNoteColorBlack"
             android:layout_width="wrap_content"
