@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/tvMyTask"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/_10sdp"
         android:paddingTop="@dimen/_10sdp"
@@ -17,9 +17,17 @@
         android:text="@string/my_note"
         android:textColor="@color/ColorWhite"
         android:textSize="@dimen/_20ssp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:src="@drawable/ic_more_vert"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/svSearch"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:contentDescription="@string/more" />
 
     <SearchView
         android:id="@+id/svSearch"
