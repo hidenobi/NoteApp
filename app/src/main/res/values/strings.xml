@@ -21,4 +21,6 @@
     <string name="complete_note">Công việc đã hoàn thành</string>
     <string name="restore_note">Khôi phục công việc đã xóa</string>
     <string name="mark_not_complete_note">Đánh dấu là chưa hoàn thành</string>
+    <string name="sort_by_title">Sắp xếp theo tiêu đề</string>
+    <string name="sort_by_date_time">Sắp xếp theo thời hạn</string>
 </resources>

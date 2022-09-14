@@ -1,7 +1,9 @@
 package com.example.noteapp.fragment
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -11,7 +13,7 @@ import com.example.noteapp.databinding.FragmentHomeBinding
 import com.example.noteapp.viewmodel.NoteViewModel
 
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment(R.layout.fragment_home), PopupMenu.OnMenuItemClickListener {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var noteViewModel: NoteViewModel
@@ -22,7 +24,19 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         addFragment()
         initAdapter()
         initViewModel()
+        setListener()
     }
+
+    private fun setListener() {
+        binding.ivMore.setOnClickListener {
+            PopupMenu(requireContext(), it).apply {
+                setOnMenuItemClickListener(this@HomeFragment)
+                inflate(R.menu.action_menu)
+                show()
+            }
+        }
+    }
+
 
     private fun initAdapter() {
         notesAdapter = NotesAdapter {
@@ -61,5 +75,34 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 .addToBackStack(null).commit()
         }
     }
+
+    override fun onMenuItemClick(p0: MenuItem?): Boolean {
+        return when (p0!!.itemId) {
+            R.id.sortByTitle -> {
+                sortByTitle()
+                true
+            }
+            R.id.sortByDateTime -> {
+                sortByDateTime()
+                true
+            }
+            else -> false
+        }
+    }
+
+    private fun sortByDateTime() {
+        noteViewModel.homeNotes.observe(viewLifecycleOwner){ notes ->
+            notes.sortBy { it.dateTime }
+            notesAdapter.setData(notes)
+        }
+    }
+
+    private fun sortByTitle() {
+        noteViewModel.homeNotes.observe(viewLifecycleOwner){ notes ->
+            notes.sortBy { it.title }
+            notesAdapter.setData(notes)
+        }
+    }
+
 
 }

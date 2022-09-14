@@ -1,7 +1,9 @@
 package com.example.noteapp.fragment
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -11,7 +13,7 @@ import com.example.noteapp.databinding.FragmentGarbageBinding
 import com.example.noteapp.viewmodel.NoteViewModel
 
 
-class GarbageFragment : Fragment(R.layout.fragment_garbage) {
+class GarbageFragment : Fragment(R.layout.fragment_garbage), PopupMenu.OnMenuItemClickListener {
     private lateinit var binding: FragmentGarbageBinding
     private lateinit var noteViewModel: NoteViewModel
     private lateinit var notesAdapter: NotesAdapter
@@ -20,8 +22,17 @@ class GarbageFragment : Fragment(R.layout.fragment_garbage) {
         binding = FragmentGarbageBinding.bind(view)
         initAdapter()
         initViewModel()
+        setListener()
     }
-
+    private fun setListener() {
+        binding.ivMore.setOnClickListener {
+            PopupMenu(requireContext(), it).apply {
+                setOnMenuItemClickListener(this@GarbageFragment)
+                inflate(R.menu.action_menu)
+                show()
+            }
+        }
+    }
     private fun initAdapter() {
         notesAdapter = NotesAdapter {
             noteViewModel.updateNote(it)
@@ -53,5 +64,33 @@ class GarbageFragment : Fragment(R.layout.fragment_garbage) {
                 .addToBackStack(null).commit()
         }
 
+    }
+
+    override fun onMenuItemClick(p0: MenuItem?): Boolean {
+        return when (p0!!.itemId) {
+            R.id.sortByTitle -> {
+                sortByTitle()
+                true
+            }
+            R.id.sortByDateTime -> {
+                sortByDateTime()
+                true
+            }
+            else -> false
+        }
+    }
+
+    private fun sortByDateTime() {
+        noteViewModel.garbageNotes.observe(viewLifecycleOwner){ notes ->
+            notes.sortBy { it.dateTime }
+            notesAdapter.setData(notes)
+        }
+    }
+
+    private fun sortByTitle() {
+        noteViewModel.garbageNotes.observe(viewLifecycleOwner){ notes ->
+            notes.sortBy { it.title }
+            notesAdapter.setData(notes)
+        }
     }
 }

@@ -1,7 +1,9 @@
 package com.example.noteapp.fragment
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -11,7 +13,8 @@ import com.example.noteapp.databinding.FragmentDoneNotesBinding
 import com.example.noteapp.viewmodel.NoteViewModel
 
 
-class DoneNotesFragment : Fragment(R.layout.fragment_done_notes) {
+class DoneNotesFragment : Fragment(R.layout.fragment_done_notes),
+    PopupMenu.OnMenuItemClickListener {
 
 
     private lateinit var binding: FragmentDoneNotesBinding
@@ -22,8 +25,18 @@ class DoneNotesFragment : Fragment(R.layout.fragment_done_notes) {
         binding = FragmentDoneNotesBinding.bind(view)
         initAdapter()
         initViewModel()
+        setListener()
     }
 
+    private fun setListener() {
+        binding.ivMore.setOnClickListener {
+            PopupMenu(requireContext(), it).apply {
+                setOnMenuItemClickListener(this@DoneNotesFragment)
+                inflate(R.menu.action_menu)
+                show()
+            }
+        }
+    }
     private fun initAdapter() {
         notesAdapter = NotesAdapter {
             noteViewModel.updateNote(it)
@@ -53,6 +66,36 @@ class DoneNotesFragment : Fragment(R.layout.fragment_done_notes) {
             parentFragmentManager.beginTransaction().setReorderingAllowed(true)
                 .replace(R.id.frameContainer, fragment)
                 .addToBackStack(null).commit()
+        }
+    }
+
+    override fun onMenuItemClick(p0: MenuItem?): Boolean {
+        return when (p0!!.itemId) {
+            R.id.sortByTitle -> {
+                sortByTitle()
+                true
+            }
+            R.id.sortByDateTime -> {
+                sortByDateTime()
+                true
+            }
+            else -> false
+        }
+    }
+
+    private fun sortByDateTime() {
+        noteViewModel.doneNotes.observe(viewLifecycleOwner){ notes ->
+            notes.sortBy { it.dateTime }
+            notesAdapter.setData(notes)
+
+        }
+    }
+
+    private fun sortByTitle() {
+        noteViewModel.doneNotes.observe(viewLifecycleOwner){ notes ->
+            notes.sortBy { it.title }
+            notesAdapter.setData(notes)
+
         }
     }
 
