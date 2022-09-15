@@ -24,6 +24,7 @@ class GarbageFragment : Fragment(R.layout.fragment_garbage), PopupMenu.OnMenuIte
         initViewModel()
         setListener()
     }
+
     private fun setListener() {
         binding.ivMore.setOnClickListener {
             PopupMenu(requireContext(), it).apply {
@@ -33,6 +34,7 @@ class GarbageFragment : Fragment(R.layout.fragment_garbage), PopupMenu.OnMenuIte
             }
         }
     }
+
     private fun initAdapter() {
         notesAdapter = NotesAdapter {
             noteViewModel.updateNote(it)
@@ -81,14 +83,14 @@ class GarbageFragment : Fragment(R.layout.fragment_garbage), PopupMenu.OnMenuIte
     }
 
     private fun sortByDateTime() {
-        noteViewModel.garbageNotes.observe(viewLifecycleOwner){ notes ->
+        noteViewModel.garbageNotes.observe(viewLifecycleOwner) { notes ->
             notes.sortBy { it.dateTime }
             notesAdapter.setData(notes)
         }
     }
 
     private fun sortByTitle() {
-        noteViewModel.garbageNotes.observe(viewLifecycleOwner){ notes ->
+        noteViewModel.garbageNotes.observe(viewLifecycleOwner) { notes ->
             notes.sortBy { it.title }
             notesAdapter.setData(notes)
         }

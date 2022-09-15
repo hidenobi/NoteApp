@@ -37,6 +37,7 @@ class DoneNotesFragment : Fragment(R.layout.fragment_done_notes),
             }
         }
     }
+
     private fun initAdapter() {
         notesAdapter = NotesAdapter {
             noteViewModel.updateNote(it)
@@ -84,7 +85,7 @@ class DoneNotesFragment : Fragment(R.layout.fragment_done_notes),
     }
 
     private fun sortByDateTime() {
-        noteViewModel.doneNotes.observe(viewLifecycleOwner){ notes ->
+        noteViewModel.doneNotes.observe(viewLifecycleOwner) { notes ->
             notes.sortBy { it.dateTime }
             notesAdapter.setData(notes)
 
@@ -92,7 +93,7 @@ class DoneNotesFragment : Fragment(R.layout.fragment_done_notes),
     }
 
     private fun sortByTitle() {
-        noteViewModel.doneNotes.observe(viewLifecycleOwner){ notes ->
+        noteViewModel.doneNotes.observe(viewLifecycleOwner) { notes ->
             notes.sortBy { it.title }
             notesAdapter.setData(notes)
 

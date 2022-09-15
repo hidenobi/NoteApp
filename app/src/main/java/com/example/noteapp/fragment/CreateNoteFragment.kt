@@ -28,7 +28,7 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
     DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
     private lateinit var binding: FragmentCreateNoteBinding
     private lateinit var noteViewModel: NoteViewModel
-    private var selectedColor = "#171C26"
+    private var selectedColor = "#202734"
     private var noteId = -1
     private var noteStatus = 0
     private var oldNotes = Notes()
@@ -54,7 +54,7 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
                 oldNotes = NotesDatabase.getDatabase(it).noteDao().getSpecificNote(noteId)
                 binding.apply {
                     edtTitle.setText(oldNotes.title)
-                    edtSubTitle.setText(oldNotes.subTitle)
+                    tvSubTitle.text = oldNotes.subTitle
                     edtNoteDesc.setText(oldNotes.noteText)
                     tvDateTime.text = oldNotes.dateTime
                     selectedColor = oldNotes.color.toString()
@@ -66,7 +66,13 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
         if (noteStatus == 0) {
             binding.ivDone.visibility = View.VISIBLE
         } else {
-            binding.ivDone.visibility = View.INVISIBLE
+            binding.apply {
+                ivDone.visibility = View.INVISIBLE
+                edtNoteDesc.isEnabled = false
+                edtTitle.isEnabled = false
+                tvSubTitle.isEnabled = false
+                tvDateTime.isEnabled = false
+            }
         }
         binding.apply {
             ivDone.setOnClickListener {
@@ -84,6 +90,9 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
             }
             tvDateTime.setOnClickListener {
                 setTime()
+            }
+            tvSubTitle.setOnClickListener {
+                openBottomSheet()
             }
 
         }
@@ -119,12 +128,13 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
             showToast("Tiêu đề không để để trống")
         } else if (binding.edtNoteDesc.text.isNullOrEmpty()) {
             showToast("Không được để trống nội dung")
-        } else if (binding.edtSubTitle.text.isNullOrEmpty()) {
+        }
+        else if (binding.tvSubTitle.text.isNullOrEmpty()) {
             showToast("Không được để trống phân loại")
         } else {
             binding.apply {
                 oldNotes.title = edtTitle.text.toString()
-                oldNotes.subTitle = edtSubTitle.text.toString()
+                oldNotes.subTitle = tvSubTitle.text.toString()
                 oldNotes.dateTime = tvDateTime.text.toString()
                 oldNotes.noteText = edtNoteDesc.text.toString()
                 oldNotes.color = selectedColor
@@ -147,13 +157,14 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
             showToast("Tiêu đề không để để trống")
         } else if (binding.edtNoteDesc.text.isNullOrEmpty()) {
             showToast("Không được để trống nội dung")
-        } else if (binding.edtSubTitle.text.isNullOrEmpty()) {
+        }
+        else if (binding.tvSubTitle.text.isNullOrEmpty()) {
             showToast("Không được để trống phân loại")
         } else {
             val notes = Notes()
             binding.apply {
                 notes.title = edtTitle.text.toString()
-                notes.subTitle = edtSubTitle.text.toString()
+                notes.subTitle = tvSubTitle.text.toString()
                 notes.dateTime = tvDateTime.text.toString()
                 notes.noteText = edtNoteDesc.text.toString()
                 notes.color = selectedColor
@@ -171,6 +182,7 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
     private fun showToast(notification: String) {
         Toast.makeText(context, notification, Toast.LENGTH_SHORT).show()
     }
+
     // dùng callback thay thế
     // 1 callback cho action
     // 1 callback cho mã màu
@@ -179,29 +191,25 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
         override fun onReceive(p0: Context?, p1: Intent?) {
             val actionColor = p1!!.getStringExtra("action")
             when (actionColor!!) {
-                "#4e33ff" -> {
-                    selectedColor = actionColor
-                    binding.viewColor.setBackgroundColor(Color.parseColor(selectedColor))
-                }
                 "#ffd633" -> {
                     selectedColor = actionColor
                     binding.viewColor.setBackgroundColor(Color.parseColor(selectedColor))
-                }
-                "#ae3b76" -> {
-                    selectedColor = actionColor
-                    binding.viewColor.setBackgroundColor(Color.parseColor(selectedColor))
+                    binding.tvSubTitle.setText(R.string.emergency)
                 }
                 "#0aebaf" -> {
                     selectedColor = actionColor
                     binding.viewColor.setBackgroundColor(Color.parseColor(selectedColor))
+                    binding.tvSubTitle.setText(R.string.prioritized)
                 }
                 "#ff7746" -> {
                     selectedColor = actionColor
                     binding.viewColor.setBackgroundColor(Color.parseColor(selectedColor))
+                    binding.tvSubTitle.setText(R.string.super_prioritized)
                 }
                 "#202734" -> {
                     selectedColor = actionColor
                     binding.viewColor.setBackgroundColor(Color.parseColor(selectedColor))
+                    binding.tvSubTitle.setText(R.string.normal)
                 }
                 "DeleteNote" -> {
                     deleteNote()
@@ -220,6 +228,7 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
                 }
                 else -> {
                     binding.viewColor.setBackgroundColor(Color.parseColor(selectedColor))
+                    binding.tvSubTitle.setText(R.string.normal)
                 }
             }
         }

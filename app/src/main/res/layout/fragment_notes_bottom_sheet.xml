@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
-    android:orientation="vertical"
-    app:behavior_peekHeight="40dp"
     app:layout_behavior="@string/bottom_sheet_behavior"
     tools:context=".MainActivity">
 
@@ -17,38 +15,43 @@
         android:background="@color/colorPrimary"
         android:orientation="horizontal"
         android:padding="@dimen/_10sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:fontFamily="@font/manrope_bold"
+            android:text="@string/choose_option"
+            android:textColor="@color/ColorWhite"
+            android:textSize="@dimen/_16ssp" />
 
         <ImageView
-            android:id="@+id/ivDone"
+            android:id="@+id/ivClose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="end"
             android:contentDescription="@string/done"
-            android:src="@drawable/ic_done"
+            android:src="@drawable/ic_close"
             app:tint="@color/ColorWhite" />
 
-        <ImageView
-            android:id="@+id/ivMore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:contentDescription="@string/more"
-            android:src="@drawable/ic_more_horizontal"
-            app:tint="@color/ColorWhite" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayoutColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="@dimen/_5sdp">
-        <!--    Không nên    -->
+        android:orientation="vertical"
+        android:padding="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutHeader">
+        <!--   Nên     -->
         <FrameLayout
-            android:id="@+id/flNoteColorBlue"
+            android:id="@+id/flNoteColorOrange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/_5sdp"
@@ -57,20 +60,29 @@
             <View
                 android:layout_width="@dimen/_24sdp"
                 android:layout_height="@dimen/_24sdp"
-                android:background="@drawable/note_color_1" />
+                android:background="@drawable/note_color_6" />
 
             <ImageView
-                android:id="@+id/ivNoteColorBlue"
-                android:layout_width="@dimen/_16sdp"
-                android:layout_height="@dimen/_16sdp"
-                android:layout_gravity="center"
+                android:id="@+id/ivNoteColorOrange"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
                 android:contentDescription="@string/done"
+                android:layout_gravity="center_vertical|start"
                 app:tint="@color/ColorWhite" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:layout_marginStart="@dimen/_28sdp"
+                android:text="@string/super_prioritized"
+                android:textColor="@color/ColorWhite"
+                android:textSize="@dimen/_14sdp" />
         </FrameLayout>
         <!-- Nên -->
         <FrameLayout
             android:id="@+id/flNoteColorYellow"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/_5sdp"
             android:paddingEnd="0dp">
@@ -82,32 +94,20 @@
 
             <ImageView
                 android:id="@+id/ivNoteColorYellow"
-                android:layout_width="@dimen/_16sdp"
-                android:layout_height="@dimen/_16sdp"
-                android:layout_gravity="center"
-                android:contentDescription="@string/done"
-                app:tint="@color/ColorWhite" />
-        </FrameLayout>
-        <!--    Bỏ     -->
-        <FrameLayout
-            android:id="@+id/flNoteColorPurple"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/_5sdp"
-            android:paddingEnd="0dp">
-
-            <View
                 android:layout_width="@dimen/_24sdp"
                 android:layout_height="@dimen/_24sdp"
-                android:background="@drawable/note_color_4" />
-
-            <ImageView
-                android:id="@+id/ivNoteColorPurple"
-                android:layout_width="@dimen/_16sdp"
-                android:layout_height="@dimen/_16sdp"
-                android:layout_gravity="center"
+                android:layout_gravity="center_vertical|start"
                 android:contentDescription="@string/done"
                 app:tint="@color/ColorWhite" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:layout_marginStart="@dimen/_28sdp"
+                android:text="@string/emergency"
+                android:textColor="@color/ColorWhite"
+                android:textSize="@dimen/_14sdp" />
         </FrameLayout>
         <!--   Nên     -->
         <FrameLayout
@@ -124,32 +124,20 @@
 
             <ImageView
                 android:id="@+id/ivNoteColorGreen"
-                android:layout_width="@dimen/_16sdp"
-                android:layout_height="@dimen/_16sdp"
-                android:layout_gravity="center"
-                android:contentDescription="@string/done"
-                app:tint="@color/ColorWhite" />
-        </FrameLayout>
-        <!--   Nên     -->
-        <FrameLayout
-            android:id="@+id/flNoteColorOrange"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/_5sdp"
-            android:paddingEnd="0dp">
-
-            <View
                 android:layout_width="@dimen/_24sdp"
                 android:layout_height="@dimen/_24sdp"
-                android:background="@drawable/note_color_6" />
-
-            <ImageView
-                android:id="@+id/ivNoteColorOrange"
-                android:layout_width="@dimen/_16sdp"
-                android:layout_height="@dimen/_16sdp"
-                android:layout_gravity="center"
+                android:layout_gravity="center_vertical|start"
                 android:contentDescription="@string/done"
                 app:tint="@color/ColorWhite" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:layout_marginStart="@dimen/_28sdp"
+                android:text="@string/prioritized"
+                android:textColor="@color/ColorWhite"
+                android:textSize="@dimen/_14sdp" />
         </FrameLayout>
         <!--   Nên     -->
         <FrameLayout
@@ -166,11 +154,20 @@
 
             <ImageView
                 android:id="@+id/ivNoteColorBlack"
-                android:layout_width="@dimen/_16sdp"
-                android:layout_height="@dimen/_16sdp"
-                android:layout_gravity="center"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_gravity="center_vertical|start"
                 android:contentDescription="@string/done"
                 app:tint="@color/ColorWhite" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:layout_marginStart="@dimen/_28sdp"
+                android:text="@string/normal"
+                android:textColor="@color/ColorWhite"
+                android:textSize="@dimen/_14sdp" />
         </FrameLayout>
 
     </LinearLayout>
@@ -184,11 +181,13 @@
         android:fontFamily="@font/manrope_bold"
         android:gravity="center_vertical"
         android:maxLines="1"
+        android:padding="@dimen/_4sdp"
         android:text="@string/delete_notes"
         android:textColor="@color/ColorWhite"
         app:drawableStartCompat="@drawable/ic_delete"
-        android:paddingBottom="@dimen/_4sdp"
-        android:paddingTop="@dimen/_4sdp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutColor" />
 
     <TextView
         android:id="@+id/tvRestoreNote"
@@ -199,11 +198,13 @@
         android:fontFamily="@font/manrope_bold"
         android:gravity="center_vertical"
         android:maxLines="1"
+        android:padding="@dimen/_4sdp"
         android:text="@string/restore_note"
         android:textColor="@color/ColorWhite"
-        app:drawableStartCompat="@drawable/ic_delete"
-        android:paddingBottom="@dimen/_4sdp"
-        android:paddingTop="@dimen/_4sdp" />
+        app:drawableStartCompat="@drawable/ic_restore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDeleteNote" />
 
     <TextView
         android:id="@+id/tvCompleteNote"
@@ -214,11 +215,13 @@
         android:fontFamily="@font/manrope_bold"
         android:gravity="center_vertical"
         android:maxLines="1"
+        android:padding="@dimen/_4sdp"
         android:text="@string/mark_as_complete"
         android:textColor="@color/ColorWhite"
         app:drawableStartCompat="@drawable/ic_done_all"
-        android:paddingBottom="@dimen/_4sdp"
-        android:paddingTop="@dimen/_4sdp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvRestoreNote" />
 
     <TextView
         android:id="@+id/tvRemoveNote"
@@ -229,11 +232,13 @@
         android:fontFamily="@font/manrope_bold"
         android:gravity="center_vertical"
         android:maxLines="1"
+        android:padding="@dimen/_4sdp"
         android:text="@string/remove_note"
         android:textColor="@color/ColorWhite"
-        app:drawableStartCompat="@drawable/ic_done_all"
-        android:paddingBottom="@dimen/_4sdp"
-        android:paddingTop="@dimen/_4sdp" />
+        app:drawableStartCompat="@drawable/ic_delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCompleteNote" />
 
     <TextView
         android:id="@+id/tvNotCompleteNote"
@@ -244,11 +249,13 @@
         android:fontFamily="@font/manrope_bold"
         android:gravity="center_vertical"
         android:maxLines="1"
+        android:padding="@dimen/_4sdp"
         android:text="@string/mark_not_complete_note"
         android:textColor="@color/ColorWhite"
-        app:drawableStartCompat="@drawable/ic_done_all"
-        android:paddingBottom="@dimen/_4sdp"
-        android:paddingTop="@dimen/_4sdp" />
+        app:drawableStartCompat="@drawable/ic_restore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvRemoveNote" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

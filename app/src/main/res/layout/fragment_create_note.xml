@@ -91,17 +91,16 @@
             android:layout_width="@dimen/_6sdp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/_5sdp"
-            android:background="@color/ColorWhite" />
+            android:background="@color/ColorDefaultNote" />
 
-        <EditText
-            android:id="@+id/edtSubTitle"
+        <TextView
+            android:id="@+id/tvSubTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="subtitle"
             android:ellipsize="end"
             android:fontFamily="@font/manrope_regular"
             android:hint="@string/sub_text"
-            android:inputType="text"
             android:maxLines="1"
             android:padding="@dimen/_10sdp"
             android:textColor="@color/ColorWhite"

@@ -19,6 +19,7 @@
         android:textSize="@dimen/_20ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/ivMore"
         android:layout_width="@dimen/_24sdp"

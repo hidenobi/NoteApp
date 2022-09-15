@@ -91,14 +91,14 @@ class HomeFragment : Fragment(R.layout.fragment_home), PopupMenu.OnMenuItemClick
     }
 
     private fun sortByDateTime() {
-        noteViewModel.homeNotes.observe(viewLifecycleOwner){ notes ->
+        noteViewModel.homeNotes.observe(viewLifecycleOwner) { notes ->
             notes.sortBy { it.dateTime }
             notesAdapter.setData(notes)
         }
     }
 
     private fun sortByTitle() {
-        noteViewModel.homeNotes.observe(viewLifecycleOwner){ notes ->
+        noteViewModel.homeNotes.observe(viewLifecycleOwner) { notes ->
             notes.sortBy { it.title }
             notesAdapter.setData(notes)
         }
