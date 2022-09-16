@@ -103,6 +103,7 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
 
     private fun setTime() {
         getDateTimeCalendar()
+        date = "Thời hạn: "
         DatePickerDialog(
             requireContext(),
             AlertDialog.THEME_HOLO_DARK,
