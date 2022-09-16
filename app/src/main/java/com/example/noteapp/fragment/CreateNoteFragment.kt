@@ -60,7 +60,6 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
                     selectedColor = oldNotes.color.toString()
                     viewColor.setBackgroundColor(Color.parseColor(oldNotes.color))
                 }
-
             }
         }
         if (noteStatus == 0) {
@@ -94,7 +93,6 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
             tvSubTitle.setOnClickListener {
                 openBottomSheet()
             }
-
         }
         LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
             broadcastReceiver, IntentFilter("bottom_sheet_action")
@@ -112,7 +110,6 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
             month,
             day
         ).show()
-
     }
 
     private fun getDateTimeCalendar() {
@@ -173,7 +170,6 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
             noteViewModel.addNote(notes)
             back()
         }
-
     }
 
     private fun back() {
@@ -183,7 +179,6 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
     private fun showToast(notification: String) {
         Toast.makeText(context, notification, Toast.LENGTH_SHORT).show()
     }
-
     // dùng callback thay thế
     // 1 callback cho action
     // 1 callback cho mã màu
@@ -246,7 +241,6 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
         back()
     }
 
-
     private fun completeNote() {
         oldNotes.statusNote = 1
         noteViewModel.updateNote(oldNotes)
@@ -270,7 +264,6 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
             noteId = requireArguments().getInt("notesId")
             noteStatus = requireArguments().getInt("noteStatus")
         }
-
     }
 
     override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
@@ -286,7 +279,6 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
             minute,
             true
         ).show()
-
     }
 
     override fun onTimeSet(p0: TimePicker?, p1: Int, p2: Int) {
