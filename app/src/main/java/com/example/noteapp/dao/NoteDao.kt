@@ -26,4 +26,7 @@ interface NoteDao {
 
     @Update
     suspend fun updateNote(note: Notes)
+
+    @Query("SELECT * FROM notes WHERE title LIKE:searchQuery AND statusNote=:statusNote")
+    fun searchByTitle(searchQuery: String, statusNote: Int): LiveData<MutableList<Notes>>
 }

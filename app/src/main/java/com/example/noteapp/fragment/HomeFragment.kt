@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -28,15 +29,34 @@ class HomeFragment : Fragment(R.layout.fragment_home), PopupMenu.OnMenuItemClick
     }
 
     private fun setListener() {
-        binding.ivMore.setOnClickListener {
-            PopupMenu(requireContext(), it).apply {
-                setOnMenuItemClickListener(this@HomeFragment)
-                inflate(R.menu.action_menu)
-                show()
+        binding.apply {
+            ivMore.setOnClickListener {
+                PopupMenu(requireContext(), it).apply {
+                    setOnMenuItemClickListener(this@HomeFragment)
+                    inflate(R.menu.action_menu)
+                    show()
+                }
             }
+            svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(p0: String?): Boolean {
+                    setDataSearch(p0)
+                    return true
+                }
+
+                override fun onQueryTextChange(p0: String?): Boolean {
+                    setDataSearch(p0)
+                    return true
+                }
+            })
         }
     }
 
+    private fun setDataSearch(p0: String?) {
+        val tmp = "%$p0%"
+        noteViewModel.searchByTitle(tmp, 0).observe(viewLifecycleOwner) { notes ->
+            notesAdapter.setData(notes)
+        }
+    }
 
     private fun initAdapter() {
         notesAdapter = NotesAdapter {
@@ -103,6 +123,5 @@ class HomeFragment : Fragment(R.layout.fragment_home), PopupMenu.OnMenuItemClick
             notesAdapter.setData(notes)
         }
     }
-
 
 }

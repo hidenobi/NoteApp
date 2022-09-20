@@ -36,17 +36,14 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun deleteNote(notes: Notes) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteNote(notes)
-        }
-    }
-
     fun deleteSpecificNote(id: Int) {
         viewModelScope.launch {
             repository.deleteSpecificNote(id)
         }
     }
+
+    fun searchByTitle(searchQuery: String, statusNote: Int): LiveData<MutableList<Notes>> =
+        repository.searchByTitle(searchQuery, statusNote)
 
 
 }

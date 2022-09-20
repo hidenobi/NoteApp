@@ -126,8 +126,7 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
             showToast("Tiêu đề không để để trống")
         } else if (binding.edtNoteDesc.text.isNullOrEmpty()) {
             showToast("Không được để trống nội dung")
-        }
-        else if (binding.tvSubTitle.text.isNullOrEmpty()) {
+        } else if (binding.tvSubTitle.text.isNullOrEmpty()) {
             showToast("Không được để trống phân loại")
         } else {
             binding.apply {
@@ -155,8 +154,7 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
             showToast("Tiêu đề không để để trống")
         } else if (binding.edtNoteDesc.text.isNullOrEmpty()) {
             showToast("Không được để trống nội dung")
-        }
-        else if (binding.tvSubTitle.text.isNullOrEmpty()) {
+        } else if (binding.tvSubTitle.text.isNullOrEmpty()) {
             showToast("Không được để trống phân loại")
         } else {
             val notes = Notes()
@@ -179,6 +177,7 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
     private fun showToast(notification: String) {
         Toast.makeText(context, notification, Toast.LENGTH_SHORT).show()
     }
+
     // dùng callback thay thế
     // 1 callback cho action
     // 1 callback cho mã màu

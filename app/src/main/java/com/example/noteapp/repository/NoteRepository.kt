@@ -12,9 +12,6 @@ class NoteRepository(private val noteDao: NoteDao) {
         noteDao.insertNotes(notes)
     }
 
-    suspend fun deleteNote(notes: Notes) {
-        noteDao.deleteNote(notes)
-    }
 
     suspend fun updateNote(notes: Notes) {
         noteDao.updateNote(notes)
@@ -23,5 +20,8 @@ class NoteRepository(private val noteDao: NoteDao) {
     suspend fun deleteSpecificNote(id: Int) {
         noteDao.deleteSpecificNote(id)
     }
+
+    fun searchByTitle(searchQuery: String, statusNote: Int): LiveData<MutableList<Notes>> =
+        noteDao.searchByTitle(searchQuery, statusNote)
 
 }
