@@ -31,6 +31,7 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
     private var selectedColor = "#202734"
     private var noteId = -1
     private var noteStatus = 0
+    private var notesSubTitle = ""
     private var oldNotes = Notes()
     private var day = 0
     private var month = 0
@@ -44,6 +45,15 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
     private var savedHour = 0
     private var savedMinute = 0
     private var date: String = "Thời hạn: "
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            noteId = requireArguments().getInt("notesId")
+            noteStatus = requireArguments().getInt("noteStatus")
+            notesSubTitle = requireArguments().getString("notesSubTitle").toString()
+        }
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentCreateNoteBinding.bind(view)
@@ -142,7 +152,7 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
     }
 
     private fun openBottomSheet() {
-        val noteBottomSheetFragment = NoteBottomSheetFragment.newInstance(noteId, noteStatus)
+        val noteBottomSheetFragment = NoteBottomSheetFragment.newInstance(noteId, noteStatus,notesSubTitle)
         noteBottomSheetFragment.show(
             requireActivity().supportFragmentManager,
             "Note Bottom Sheet Fragment"
@@ -255,14 +265,6 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
     override fun onDestroy() {
         LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(broadcastReceiver)
         super.onDestroy()
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            noteId = requireArguments().getInt("notesId")
-            noteStatus = requireArguments().getInt("noteStatus")
-        }
     }
 
     override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {

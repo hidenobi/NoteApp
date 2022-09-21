@@ -26,7 +26,7 @@
     <string name="close">close</string>
     <string name="normal">Bình thường</string>
     <string name="prioritized">Ưu tiên</string>
-    <string name="super_prioritized">Siêu cấp ưu tiên</string>
+    <string name="super_prioritized">Cực kỳ khẩn cấp</string>
     <string name="emergency">Khẩn cấp</string>
     <string name="choose_option">Tùy chọn</string>
 </resources>

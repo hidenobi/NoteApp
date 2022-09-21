@@ -22,7 +22,7 @@ class NotesAdapter(private val callBack: (Notes) -> Unit) :
                 tvDateTime.text = item.dateTime
                 tvDesc.text = item.noteText
                 cardViewItem.setOnClickListener {
-                    listener!!.onClicked(item.id!!, item.statusNote)
+                    listener!!.onClicked(item.id!!, item.statusNote,item.subTitle.toString())
                 }
             }
             if (item.color != null) {
@@ -53,11 +53,8 @@ class NotesAdapter(private val callBack: (Notes) -> Unit) :
         notifyDataSetChanged()
     }
 
-    //    private fun sendData(notes: Notes) {
-//        callBack(notes)
-//    }
     interface OnItemClickListener {
-        fun onClicked(notesId: Int, notesStatus: Int)
+        fun onClicked(notesId: Int, notesStatus: Int, notesSubTitle:String)
     }
 
     fun setOnClickListener(listener: OnItemClickListener) {

@@ -53,6 +53,21 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment() {
                         tvRestoreNote.visibility = View.VISIBLE
                     }
                 }
+                when(notesSubTitle){
+                    "Cực kỳ khẩn cấp"->{
+                        ivNoteColorOrange.setImageResource(R.drawable.ic_done)
+                    }
+                    "Khẩn cấp"->{
+                        ivNoteColorYellow.setImageResource(R.drawable.ic_done)
+                    }
+                    "Ưu tiên"->{
+                        ivNoteColorGreen.setImageResource(R.drawable.ic_done)
+                    }
+                    else->{
+                        ivNoteColorBlack.setImageResource(R.drawable.ic_done)
+                    }
+
+                }
 
             } else {
                 tvNotCompleteNote.visibility = View.GONE
@@ -155,12 +170,14 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment() {
     companion object {
         var noteId = -1
         var noteStatus = 0
-        fun newInstance(id: Int, status: Int): NoteBottomSheetFragment {
+        var notesSubTitle = ""
+        fun newInstance(id: Int, status: Int,subTitle:String): NoteBottomSheetFragment {
             val args = Bundle()
             val fragment = NoteBottomSheetFragment()
             fragment.arguments = args
             noteId = id
             noteStatus = status
+            notesSubTitle = subTitle
             return fragment
         }
     }
