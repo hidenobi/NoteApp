@@ -54,6 +54,7 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
             notesSubTitle = requireArguments().getString("notesSubTitle").toString()
         }
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentCreateNoteBinding.bind(view)
@@ -152,7 +153,8 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
     }
 
     private fun openBottomSheet() {
-        val noteBottomSheetFragment = NoteBottomSheetFragment.newInstance(noteId, noteStatus,notesSubTitle)
+        val noteBottomSheetFragment =
+            NoteBottomSheetFragment.newInstance(noteId, noteStatus, notesSubTitle)
         noteBottomSheetFragment.show(
             requireActivity().supportFragmentManager,
             "Note Bottom Sheet Fragment"

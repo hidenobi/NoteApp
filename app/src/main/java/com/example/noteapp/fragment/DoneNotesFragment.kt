@@ -78,12 +78,12 @@ class DoneNotesFragment : Fragment(R.layout.fragment_done_notes),
     }
 
     private val onClicked = object : NotesAdapter.OnItemClickListener {
-        override fun onClicked(notesId: Int, notesStatus: Int,notesSubTitle:String) {
+        override fun onClicked(notesId: Int, notesStatus: Int, notesSubTitle: String) {
             val fragment = CreateNoteFragment()
             val bundle = Bundle()
             bundle.putInt("notesId", notesId)
             bundle.putInt("noteStatus", notesStatus)
-            bundle.putString("notesSubTitle",notesSubTitle)
+            bundle.putString("notesSubTitle", notesSubTitle)
             fragment.arguments = bundle
             parentFragmentManager.beginTransaction().replace(R.id.frameContainer, fragment)
                 .addToBackStack(null).commit()
