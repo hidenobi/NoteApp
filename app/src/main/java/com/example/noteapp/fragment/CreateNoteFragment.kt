@@ -44,7 +44,7 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
     private var savedYear = 0
     private var savedHour = 0
     private var savedMinute = 0
-    private var date: String = "Thời hạn: "
+    private var date: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -112,7 +112,7 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
 
     private fun setTime() {
         getDateTimeCalendar()
-        date = "Thời hạn: "
+        date = ""
         DatePickerDialog(
             requireContext(),
             AlertDialog.THEME_HOLO_DARK,

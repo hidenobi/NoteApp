@@ -52,29 +52,49 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivBack" />
 
-    <TextView
-        android:id="@+id/tvDateTime"
+    <LinearLayout
+        android:id="@+id/llDateTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:autofillHints="dateTime"
-        android:ellipsize="end"
-        android:fontFamily="@font/manrope_bold"
-        android:hint="@string/dateTime"
-        android:maxLines="1"
-        android:paddingStart="@dimen/_10sdp"
-        android:paddingEnd="0dp"
-        android:textColor="@color/ColorWhite"
-        android:textColorHint="@color/ColorGray"
-        android:textSize="@dimen/_16ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edtTitle"
-        android:drawablePadding="@dimen/_24sdp"
-        app:drawableEndCompat="@drawable/ic_calendar" />
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_2sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:autofillHints="dateTime"
+            android:ellipsize="end"
+            android:fontFamily="@font/manrope_bold"
+            android:hint="@string/dateTime"
+            android:maxLines="1"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="0dp"
+            android:textColor="@color/ColorWhite"
+            android:textColorHint="@color/ColorWhite"
+            android:textSize="@dimen/_16ssp"
+            android:drawablePadding="@dimen/_24sdp" />
+        <TextView
+            android:id="@+id/tvDateTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:autofillHints="dateTime"
+            android:ellipsize="end"
+            android:fontFamily="@font/manrope_bold"
+            android:maxLines="1"
+            android:textColor="@color/ColorWhite"
+            android:textColorHint="@color/ColorGray"
+            android:textSize="@dimen/_16ssp"
+            android:drawablePadding="@dimen/_24sdp"
+            app:drawableEndCompat="@drawable/ic_calendar" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/llSubTitle"
@@ -84,7 +104,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDateTime">
+        app:layout_constraintTop_toBottomOf="@id/llDateTime">
 
         <View
             android:id="@+id/viewColor"
