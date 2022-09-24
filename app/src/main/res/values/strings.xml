@@ -9,7 +9,7 @@
     <string name="title">Tiêu đề</string>
     <string name="sub_text">Phân loại</string>
     <string name="enter_note">Nhập nội dung</string>
-    <string name="dateTime">Thời hạn</string>
+    <string name="dateTime">Thời hạn: </string>
     <string name="more">more</string>
     <string name="delete_notes">Đưa vào thùng rác</string>
     <string name="done_note">Công việc đã hoàn thành</string>

@@ -19,6 +19,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), PopupMenu.OnMenuItemClick
     private lateinit var binding: FragmentHomeBinding
     private lateinit var noteViewModel: NoteViewModel
     private lateinit var notesAdapter: NotesAdapter
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
@@ -124,5 +125,6 @@ class HomeFragment : Fragment(R.layout.fragment_home), PopupMenu.OnMenuItemClick
             notesAdapter.setData(notes)
         }
     }
+
 
 }
