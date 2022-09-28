@@ -52,6 +52,14 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment() {
                         tvNotCompleteNote.visibility = View.GONE
                         tvRestoreNote.visibility = View.VISIBLE
                     }
+                    else -> {
+                        linearLayoutColor.visibility = View.GONE
+                        tvRemoveNote.visibility = View.VISIBLE
+                        tvDeleteNote.visibility = View.GONE
+                        tvCompleteNote.visibility = View.GONE
+                        tvNotCompleteNote.visibility = View.GONE
+                        tvRestoreNote.visibility = View.GONE
+                    }
                 }
                 when (notesSubTitle) {
                     "Cực kỳ khẩn cấp" -> {

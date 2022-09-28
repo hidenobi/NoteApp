@@ -273,7 +273,7 @@ class CreateNoteFragment : Fragment(R.layout.fragment_create_note),
         savedDay = p3
         savedMonth = p2
         savedYear = p1
-        date += String.format("%02d.%02d.%04d", savedDay, savedMonth, savedYear)
+        date += String.format("%02d.%02d.%04d", savedDay, savedMonth + 1, savedYear)
         TimePickerDialog(
             requireContext(),
             AlertDialog.THEME_HOLO_DARK,

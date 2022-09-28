@@ -12,8 +12,8 @@ interface NoteDao {
     @Query("SELECT * FROM notes WHERE id =:id")
     fun getSpecificNote(id: Int): Notes
 
-    @Query("SELECT * FROM notes WHERE statusNote=:statusNote")
-    fun getStatusNote(statusNote: Int): LiveData<MutableList<Notes>>
+    @Query("SELECT * FROM notes WHERE statusNote=:statusNote OR statusNote=:statusNoteAdd")
+    fun getStatusNote(statusNote: Int, statusNoteAdd: Int): LiveData<MutableList<Notes>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNotes(note: Notes)

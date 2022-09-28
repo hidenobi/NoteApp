@@ -1,19 +1,29 @@
 package com.example.noteapp.fragment
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
 import android.widget.SearchView
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.noteapp.R
 import com.example.noteapp.adapter.NotesAdapter
+import com.example.noteapp.broadcast.MESSAGE_EXTRA
+import com.example.noteapp.broadcast.NOTE_ID
+import com.example.noteapp.broadcast.Notification
+import com.example.noteapp.broadcast.TITLE_EXTRA
 import com.example.noteapp.databinding.FragmentGarbageBinding
 import com.example.noteapp.viewmodel.NoteViewModel
 
-
+@RequiresApi(Build.VERSION_CODES.O)
 class GarbageFragment : Fragment(R.layout.fragment_garbage), PopupMenu.OnMenuItemClickListener {
     private lateinit var binding: FragmentGarbageBinding
     private lateinit var noteViewModel: NoteViewModel
@@ -71,6 +81,9 @@ class GarbageFragment : Fragment(R.layout.fragment_garbage), PopupMenu.OnMenuIte
     private fun initViewModel() {
         noteViewModel = ViewModelProvider(this)[NoteViewModel::class.java]
         noteViewModel.garbageNotes.observe(viewLifecycleOwner) {
+            for (note in it) {
+                cancelNotification(note.id!!, note.title!!, note.noteText!!, note.dateTime!!)
+            }
             notesAdapter.setData(it)
         }
     }
@@ -115,5 +128,20 @@ class GarbageFragment : Fragment(R.layout.fragment_garbage), PopupMenu.OnMenuIte
             notes.sortBy { it.title }
             notesAdapter.setData(notes)
         }
+    }
+
+    private fun cancelNotification(id: Int, title: String, message: String, time: String) {
+        val intent = Intent(context, Notification::class.java)
+        intent.putExtra(TITLE_EXTRA, title)
+        intent.putExtra(NOTE_ID, id)
+        intent.putExtra(MESSAGE_EXTRA, "$message\n in $time")
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            id,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+        val alarmManager = activity?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.cancel(pendingIntent)
     }
 }

@@ -5,13 +5,12 @@ import com.example.noteapp.dao.NoteDao
 import com.example.noteapp.entities.Notes
 
 class NoteRepository(private val noteDao: NoteDao) {
-    val homeNotes: LiveData<MutableList<Notes>> = noteDao.getStatusNote(0)
-    val doneNotes: LiveData<MutableList<Notes>> = noteDao.getStatusNote(1)
-    val garbageNotes: LiveData<MutableList<Notes>> = noteDao.getStatusNote(-1)
+    val homeNotes: LiveData<MutableList<Notes>> = noteDao.getStatusNote(0, 0)
+    val doneNotes: LiveData<MutableList<Notes>> = noteDao.getStatusNote(1, 1)
+    val garbageNotes: LiveData<MutableList<Notes>> = noteDao.getStatusNote(-1, -2)
     suspend fun addNote(notes: Notes) {
         noteDao.insertNotes(notes)
     }
-
 
     suspend fun updateNote(notes: Notes) {
         noteDao.updateNote(notes)
@@ -25,3 +24,4 @@ class NoteRepository(private val noteDao: NoteDao) {
         noteDao.searchByTitle(searchQuery, statusNote)
 
 }
+
