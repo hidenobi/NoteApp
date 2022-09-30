@@ -10,6 +10,10 @@ import com.example.noteapp.R
 import com.example.noteapp.databinding.FragmentNotesBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
+const val PRIORITY = "Ưu tiên"
+const val SUPER_PRIORITY = "Cực kỳ khẩn cấp"
+const val EMERGENCY = "Khẩn cấp"
+
 class NoteBottomSheetFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentNotesBottomSheetBinding
@@ -62,18 +66,10 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment() {
                     }
                 }
                 when (notesSubTitle) {
-                    "Cực kỳ khẩn cấp" -> {
-                        ivNoteColorOrange.setImageResource(R.drawable.ic_done)
-                    }
-                    "Khẩn cấp" -> {
-                        ivNoteColorYellow.setImageResource(R.drawable.ic_done)
-                    }
-                    "Ưu tiên" -> {
-                        ivNoteColorGreen.setImageResource(R.drawable.ic_done)
-                    }
-                    else -> {
-                        ivNoteColorBlack.setImageResource(R.drawable.ic_done)
-                    }
+                    SUPER_PRIORITY -> ivNoteColorOrange.setImageResource(R.drawable.ic_done)
+                    EMERGENCY -> ivNoteColorYellow.setImageResource(R.drawable.ic_done)
+                    PRIORITY -> ivNoteColorGreen.setImageResource(R.drawable.ic_done)
+                    else -> ivNoteColorBlack.setImageResource(R.drawable.ic_done)
 
                 }
 

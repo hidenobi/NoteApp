@@ -22,9 +22,17 @@ import com.example.noteapp.R
 import com.example.noteapp.adapter.NotesAdapter
 import com.example.noteapp.broadcast.*
 import com.example.noteapp.databinding.FragmentHomeBinding
+import com.example.noteapp.util.EMERGENCY
+import com.example.noteapp.util.PRIORITY
+import com.example.noteapp.util.SUPER_PRIORITY
 import com.example.noteapp.viewmodel.NoteViewModel
 import java.text.SimpleDateFormat
 import java.util.*
+
+const val ONE_HOUR = 3600000
+const val TWO_HOUR = 7200000
+const val THREE_HOUR = 10800000
+const val EIGHT_HOUR = 28800000
 
 @RequiresApi(Build.VERSION_CODES.O)
 class HomeFragment : Fragment(R.layout.fragment_home), PopupMenu.OnMenuItemClickListener {
@@ -99,7 +107,13 @@ class HomeFragment : Fragment(R.layout.fragment_home), PopupMenu.OnMenuItemClick
                 val currentTime = System.currentTimeMillis()
                 if (sdf > currentTime) {
                     Log.i("TAG", "initViewModel: true")
-                    scheduleNotification(note.id!!, note.title!!, note.noteText!!, note.dateTime!!)
+                    scheduleNotification(
+                        note.id!!,
+                        note.title!!,
+                        note.noteText!!,
+                        note.dateTime!!,
+                        note.subTitle!!
+                    )
                 }
                 if (sdf < currentTime) {
                     note.statusNote = -2
@@ -170,13 +184,25 @@ class HomeFragment : Fragment(R.layout.fragment_home), PopupMenu.OnMenuItemClick
         notificationManager.createNotificationChannel(channel)
     }
 
-    private fun scheduleNotification(id: Int, title: String, message: String, time: String) {
+    private fun scheduleNotification(
+        id: Int,
+        title: String,
+        message: String,
+        time: String,
+        subTitle: String
+    ) {
         val intent = Intent(context, Notification::class.java)
         intent.putExtra(TITLE_EXTRA, title)
         intent.putExtra(NOTE_ID, id)
-        intent.putExtra(MESSAGE_EXTRA, "$message\n lúc $time")
-        val setTime =
+        intent.putExtra(MESSAGE_EXTRA, "$message lúc $time")
+        var setTime =
             SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault()).parse(time)!!.time
+        setTime -= when (subTitle) {
+            SUPER_PRIORITY -> EIGHT_HOUR
+            EMERGENCY -> THREE_HOUR
+            PRIORITY -> TWO_HOUR
+            else -> ONE_HOUR
+        }
         val pendingIntent = PendingIntent.getBroadcast(
             context,
             id,
