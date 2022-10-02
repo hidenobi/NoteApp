@@ -63,7 +63,11 @@ class GarbageFragment : Fragment(R.layout.fragment_garbage), PopupMenu.OnMenuIte
     private fun setDataSearch(p0: String?) {
         val tmp = "%$p0%"
         noteViewModel.searchByTitle(tmp, -1).observe(viewLifecycleOwner) { notes ->
-            notesAdapter.setData(notes)
+            noteViewModel.searchByTitle(tmp,-2).observe(viewLifecycleOwner){
+                it.addAll(notes)
+                notesAdapter.setData(it)
+            }
+
         }
     }
 
