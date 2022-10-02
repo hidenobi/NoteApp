@@ -49,5 +49,10 @@ Sản phẩm NoteApp là sản phẩm sau khóa học mobile
 
 <img src="https://user-images.githubusercontent.com/84774285/192411351-512360eb-1d7e-4307-b3e1-1eb83b7a2efa.png" style="width:200px;height:400px">
 
+**Tính năng thông báo trước khi đến giờ làm**
+
+<img src="https://user-images.githubusercontent.com/84774285/193434931-408ba353-263d-4339-a251-66dcba508365.png" style="width:200px;height:400px">
+
+
 
     
